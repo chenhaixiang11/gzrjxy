@@ -1,0 +1,136 @@
+/* ============ 展览页公共基础 ============ */
+:root{
+  --ink:#0e1623;--text:#e9edf2;--muted:#9aa6b3;--line:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  background:var(--ink);color:var(--text);line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 34px}
+
+/* 顶部返回导航 */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;transition:.3s;
+}
+.topbar.solid{background:rgba(10,16,24,.85);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.topbar .logo{font-weight:700;letter-spacing:2px;color:#fff;font-size:17px}
+.topbar .logo em{font-style:normal;color:var(--accent)}
+.topbar a.home{font-size:13px;letter-spacing:1px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;transition:.25s}
+.topbar a.home:hover{border-color:var(--accent);color:#fff}
+
+/* ============ 主题变量 ============ */
+body.theme-landscape{--accent:#8fd3e8;--accent-2:#5aa9d6;--tint:rgba(143,211,232,.12);--grad:linear-gradient(160deg,#0c2435,#143d55 60%,#0b1f2e);--banner-font:clamp(38px,6vw,76px)}
+body.theme-portrait {--accent:#f0a878;--accent-2:#e8856b;--tint:rgba(240,168,120,.14);--grad:linear-gradient(160deg,#2a1a16,#4a2720 60%,#241410);--banner-font:clamp(38px,6vw,76px)}
+body.theme-anime    {--accent:#c9a86a;--accent-2:#a8c9d8;--tint:rgba(201,168,106,.16);--grad:linear-gradient(165deg,#131a38,#2a3a5c 60%,#0f1430);--banner-font:clamp(38px,6vw,80px)}
+
+/* ============ Banner ============ */
+.pg-hero{
+  position:relative;min-height:78vh;display:flex;align-items:center;
+  background:var(--grad) center/cover;padding:120px 0 70px;overflow:hidden;
+}
+.pg-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 500px at 80% 20%,var(--tint),transparent 60%)}
+.pg-hero .wrap{position:relative;z-index:2;width:100%}
+.crumbs{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;letter-spacing:2px;margin-bottom:30px}
+.crumbs a{color:var(--accent)}
+.crumbs .sep{opacity:.5}
+.pg-hero h1{font-size:var(--banner-font);font-weight:900;color:#fff;line-height:1.05;letter-spacing:2px}
+.pg-hero h1 em{font-style:normal;color:var(--accent)}
+.pg-hero .sub{max-width:620px;color:var(--muted);font-size:16px;margin-top:22px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:30px;margin-top:36px}
+.hero-meta .m .k{font-size:11px;color:var(--muted);letter-spacing:3px}
+.hero-meta .m .v{font-size:26px;font-weight:800;color:#fff;margin-top:4px}
+.hero-meta .m .v small{font-size:13px;color:var(--accent);font-weight:600}
+
+.scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:12px;letter-spacing:4px;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ============ 说明段 ============ */
+.about-txt{padding:66px 0 10px}
+.about-txt .line{width:52px;height:2px;background:var(--accent);margin-bottom:22px}
+.about-txt h2{font-size:28px;color:#fff;margin-bottom:18px}
+.about-txt p{color:var(--muted);max-width:820px;font-size:15px;margin-bottom:12px}
+.about-txt strong{color:var(--accent)}
+
+/* ============ 作品墙 ============ */
+.works{padding:56px 0 90px}
+.works-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:16px}
+.works-head h2{font-size:26px;color:#fff}
+.works-head span{font-size:13px;color:var(--accent);letter-spacing:2px}
+.grid{display:grid;gap:26px}
+.grid.mixed{grid-template-columns:repeat(3,1fr)}
+.work{
+  background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  transition:.35s;position:relative;opacity:0;transform:translateY(24px);
+}
+.work.in{opacity:1;transform:none}
+.work:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 46px rgba(0,0,0,.5)}
+.work .media{overflow:hidden;position:relative}
+.work .media img{width:100%;height:280px;object-fit:cover;transition:transform .7s}
+.work:hover .media img{transform:scale(1.06)}
+.work .price{position:absolute;top:14px;right:14px;color:#10122a;background:var(--accent);font-weight:800;padding:3px 12px;border-radius:999px;font-size:14px}
+.work .body{padding:20px 22px 24px}
+.work .row{display:flex;justify-content:space-between;align-items:baseline}
+.work .body h3{color:#fff;font-size:19px;margin-bottom:4px}
+.work .time{font-size:12px;color:var(--accent);letter-spacing:1px}
+.work .body p{color:var(--muted);font-size:13px;margin-top:10px}
+.work.tags span,.work .tags span,body.theme-anime .work .tags span{font-size:13px;color:var(--text)}
+.work{text-decoration:none}
+.work .body h3{color:#fff}
+.work .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.work .tags span{font-size:11px;color:var(--text);background:var(--tint);border:1px solid rgba(255,255,255,.1);padding:3px 10px;border-radius:999px}
+
+/* ============ 通用详情页 ============ */
+.detail-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.dt-media{border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.dt-media img{width:100%;height:520px;object-fit:cover}
+.dt-info .dt-badge{display:inline-block;color:var(--ink);background:var(--accent);font-size:12px;font-weight:700;padding:4px 14px;border-radius:999px;letter-spacing:1px;margin-bottom:18px}
+.dt-info h2{font-size:34px;color:#fff;margin-bottom:14px}
+.dt-desc{color:var(--muted);font-size:16px;margin-bottom:18px}
+.dt-price{display:inline-block;color:var(--ink);background:linear-gradient(90deg,var(--accent),var(--accent-2));font-size:24px;font-weight:800;padding:8px 22px;border-radius:12px;margin-bottom:26px}
+.dt-info .label{font-size:11px;color:var(--muted);letter-spacing:3px;margin:20px 0 8px}
+.dt-info .time{font-size:16px;color:#fff}
+.dt-info p{color:var(--text);font-size:15px}
+.dt-tags{display:flex;flex-wrap:wrap;gap:10px}
+.dt-tags span{color:var(--text);background:var(--tint);border:1px solid rgba(255,255,255,.12);padding:6px 16px;border-radius:999px;font-size:13px}
+.detail-actions{display:flex;gap:14px;margin-top:46px}
+.btn{display:inline-block;background:var(--accent);color:var(--ink);font-weight:700;padding:13px 28px;border-radius:999px;transition:.25s;border:1px solid transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:#fff}
+
+/* 主题特异性 - 详情页图片 */
+body.theme-portrait .dt-media img{height:540px;object-fit:cover;border-radius:0}
+body.theme-anime .dt-media{border-radius:26px}
+
+@media (max-width:900px){
+  .detail-layout{grid-template-columns:1fr}
+  .dt-media img{height:340px}
+}
+
+/* 主题特异性 - landscape 大图横幅式 */
+body.theme-landscape .grid.mixed{grid-template-columns:repeat(2,1fr)}
+body.theme-landscape .work.featured{grid-column:1/-1}
+body.theme-landscape .featured .media img{height:460px}
+
+/* 主题特异性 - portrait 圆形图 */
+body.theme-portrait .work .media{padding:26px 26px 0}
+body.theme-portrait .work .media img{height:280px;object-fit:cover;border-radius:16px}
+body.theme-portrait .work:hover .media img{transform:scale(1.03)}
+
+/* 主题特异性 - anime 手绘感 */
+body.theme-anime .work{border-radius:22px;background:rgba(201,168,106,.06)}
+body.theme-anime .work .media img{height:300px;object-fit:cover}
+
+footer{padding:30px 36px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+
+@media (max-width:820px){
+  .grid.mixed{grid-template-columns:1fr}
+  body.theme-landscape .grid.mixed{grid-template-columns:1fr}
+  .pg-hero{min-height:60vh;padding:110px 0 50px}
+}
