@@ -1,0 +1,17 @@
+# 操作系统临时文件
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 编辑器/IDE 临时文件
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# 日志与备份
+*.log
+*.bak
+*.tmp

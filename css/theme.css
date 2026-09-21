@@ -1,0 +1,89 @@
+/* ============ 深浅主题切换（极北 / 月牙白） ============ */
+:root{color-scheme:dark}
+html.theme-light{color-scheme:light}
+
+body{transition:background-color .3s ease,color .3s ease}
+
+/* 主题切换按钮 */
+.theme-toggle{
+  display:grid;place-items:center;cursor:pointer;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--ink-2);color:var(--text);
+  border:1px solid var(--line);
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+  transition:background .25s,color .25s,border-color .25s,transform .25s;
+}
+.theme-toggle:hover{transform:rotate(15deg);border-color:var(--accent)}
+.theme-toggle svg{width:20px;height:20px}
+.theme-toggle .icon-sun{display:none}
+.theme-toggle.is-light .icon-moon{display:none}
+.theme-toggle.is-light .icon-sun{display:block}
+/* 主页：固定在右上角（移动端让位给菜单按钮） */
+.theme-toggle{position:fixed;top:16px;right:16px;z-index:1500}
+@media (max-width:1024px){.theme-toggle{right:72px}}
+/* 展览/详情页：位于顶部导航栏右侧 */
+.topbar .theme-toggle{position:static;width:40px;height:40px;margin-left:14px}
+
+/* ============ 月牙白（浅色）主题 ============ */
+html.theme-light body{
+  --ink:#f5f0e6;      /* 页面背景 */
+  --ink-2:#ffffff;    /* 卡片表面 */
+  --paper:#fbf7ee;
+  --paper-2:#f0e9db;
+  --text:#2b3542;     /* 正文 */
+  --muted:#6d7a8a;    /* 次要文字 */
+  --line:rgba(40,56,80,.14); /* 边框 */
+  --accent:#a97d33;   /* 主金色加深 */
+  --accent-2:#5d8fb8;
+}
+/* 分类主题在浅色下保持同风格、加深对比 */
+html.theme-light body.theme-landscape{--accent:#2f87ad;--accent-2:#3d84b5}
+html.theme-light body.theme-portrait{--accent:#d97b47;--accent-2:#c9614a}
+html.theme-light body.theme-anime{--accent:#a8813f;--accent-2:#4f93a8}
+/* 展览 Banner 保持深色底与原有高亮配色 */
+html.theme-light .pg-hero{--muted:#9aa6b3}
+html.theme-light body.theme-landscape .pg-hero{--accent:#8fd3e8;--accent-2:#5aa9d6}
+html.theme-light body.theme-portrait .pg-hero{--accent:#f0a878;--accent-2:#e8856b}
+html.theme-light body.theme-anime .pg-hero{--accent:#c9a86a;--accent-2:#a8c9d8}
+html.theme-light body.theme-landscape .topbar:not(.solid){--accent:#8fd3e8}
+html.theme-light body.theme-portrait .topbar:not(.solid){--accent:#f0a878}
+html.theme-light body.theme-anime .topbar:not(.solid){--accent:#c9a86a}
+
+/* 文字：将原深色背景上的白色文字适配为深色 */
+html.theme-light .brand h1,
+html.theme-light .hero h2,
+html.theme-light .sec-head h3,
+html.theme-light .card .body h4,
+html.theme-light .contact-item .v,
+html.theme-light .about-txt h2,
+html.theme-light .works-head h2,
+html.theme-light .work .body h3,
+html.theme-light .dt-info h2,
+html.theme-light .dt-info .time{color:#232c38}
+
+/* 表面与边框适配 */
+html.theme-light .sidebar{background:linear-gradient(180deg,#faf5eb,#f0e9dc 80%)}
+html.theme-light .nav a:hover{color:#232c38;background:rgba(40,56,80,.06)}
+html.theme-light .nav a.active{color:#232c38}
+html.theme-light .skills span{color:#232c38;background:rgba(40,56,80,.05);border-color:rgba(40,56,80,.14)}
+html.theme-light .skills span.warm{border-color:rgba(217,178,106,.45)}
+html.theme-light .skills span.cool{border-color:rgba(47,135,173,.45)}
+html.theme-light .about-card .meta ul li{background:rgba(40,56,80,.05);border-color:rgba(40,56,80,.14)}
+html.theme-light .work{background:var(--ink-2)}
+html.theme-light body.theme-anime .work{background:rgba(168,129,63,.07)}
+html.theme-light .work .tags span,
+html.theme-light .dt-tags span{border-color:rgba(40,56,80,.16)}
+/* 强调色按钮：改用深色文字保证对比度 */
+html.theme-light .btn,
+html.theme-light .dt-badge,
+html.theme-light .dt-price,
+html.theme-light .nav-toggle{color:#232c38}
+html.theme-light .btn.ghost:hover{color:#232c38}
+
+/* 顶部导航栏适配（展览/详情页） */
+html.theme-light .topbar{color:#fff}
+html.theme-light .topbar:not(.solid) a.home{border-color:rgba(255,255,255,.25)}
+html.theme-light .topbar:not(.solid) .theme-toggle{background:rgba(40,56,80,.25);color:#fff;border-color:rgba(255,255,255,.25)}
+html.theme-light .topbar.solid{background:rgba(250,246,236,.9);color:#232c38;box-shadow:0 4px 20px rgba(30,44,64,.12)}
+html.theme-light .topbar.solid .logo{color:#232c38}
+html.theme-light .topbar.solid a.home:hover{color:#232c38}
